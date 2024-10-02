@@ -1,15 +1,37 @@
-import pandas as pd
-from functions import LimpiarDatos, IngeniarCaracteristicas, ConstruirModelo, CalcularKPIs, ExportarResultados
+import os
+from functions import (
+    cargar_datos,
+    limpiar_datos,
+    ingenieria_caracteristicas,
+    construir_modelo,
+    calcular_kpis,
+    exportar_datos
+)
 
-# Cargar datos
-url = "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
-DatosVino = pd.read_csv(url, sep=';')
+def main():
+    # Cargar el conjunto de datos
+    url = "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
+    datos_vino = cargar_datos(url)
 
-# Proceso del flujo
-DatosVino = LimpiarDatos(DatosVino)
-DatosVino = IngeniarCaracteristicas(DatosVino)
-Precision, Reporte = ConstruirModelo(DatosVino)
-KPIs = CalcularKPIs(DatosVino)
+    # Limpiar los datos
+    datos_vino = limpiar_datos(datos_vino)
 
-# Exportar resultados
-ExportarResultados(DatosVino, "data/MLChemicalQualityWine.csv")
+    # Ingeniar características
+    datos_vino = ingenieria_caracteristicas(datos_vino)
+
+    # Construir el modelo
+    precision, reporte = construir_modelo(datos_vino)
+    print(f"Precisión: {precision}\nReporte de Clasificación:\n{reporte}")
+
+    # Calcular KPIs
+    kpis = calcular_kpis(datos_vino)
+    print(f"KPIs:\n{kpis}")
+
+    # Crear la carpeta 'data' si no existe
+    os.makedirs("data", exist_ok=True)
+
+    # Exportar el DataFrame a CSV
+    exportar_datos(datos_vino, "data/MLChemicalQualityWine.csv")
+
+if __name__ == "__main__":
+    main()
