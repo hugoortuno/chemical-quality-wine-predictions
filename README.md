@@ -48,6 +48,12 @@ Para ejecutar el análisis, abre el notebook de Jupyter incluido en el repositor
 
 Este proyecto demuestra cómo se pueden utilizar técnicas de Machine Learning para predecir la calidad de los vinos y resalta la importancia de la ingeniería de características en el proceso de modelado.
 
+## Enlaces adicionales
+
+- **Repositorio en GitHub**: [Predicción de calidad de vinos](https://github.com/hugoortuno/chemical-quality-wine-predictions)
+- **Enlace de la presentación**: [Canva](https://www.canva.com/design/DAGTE8gIUS8/nRPM7MdHmVuE4jq95mhMMw/edit)
+- **Dashboard en Power BI**: Pendiente
+
 ## Créditos
 
 - [Hugo Ortuño Suárez]
