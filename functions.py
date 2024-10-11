@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
@@ -46,3 +48,33 @@ def calcular_kpis(df):
 def exportar_datos(df, filename):
     """Exportar el DataFrame a un archivo CSV."""
     df.to_csv(filename, index=False)
+
+def graficar_distribucion_calidad(df, filename="distribucion_calidad.png"):
+    """Graficar la distribución de la calidad de los vinos y guardar como imagen."""
+    plt.figure(figsize=(8, 6))
+    sns.countplot(x='Calidad', data=df)
+    plt.title('Distribución de la Calidad de los Vinos')
+    plt.xlabel('Calidad')
+    plt.ylabel('Cantidad')
+    plt.savefig(filename)  # Guardar el gráfico como imagen
+    plt.close()  # Cerrar el gráfico para liberar memoria
+
+def graficar_alcohol_vs_calidad(df, filename="alcohol_vs_calidad.png"):
+    """Graficar alcohol vs calidad de los vinos y guardar como imagen."""
+    plt.figure(figsize=(8, 6))
+    sns.boxplot(x='Calidad', y='alcohol', data=df)
+    plt.title('Relación entre Alcohol y Calidad del Vino')
+    plt.xlabel('Calidad')
+    plt.ylabel('Nivel de Alcohol')
+    plt.savefig(filename)  # Guardar el gráfico como imagen
+    plt.close()  # Cerrar el gráfico
+
+def graficar_acidez_vs_calidad(df, filename="acidez_vs_calidad.png"):
+    """Graficar acidez volátil vs calidad de los vinos y guardar como imagen."""
+    plt.figure(figsize=(8, 6))
+    sns.scatterplot(x='volatile acidity', y='Calidad', data=df, hue='EsBuena')
+    plt.title('Relación entre Acidez Volátil y Calidad del Vino')
+    plt.xlabel('Acidez Volátil')
+    plt.ylabel('Calidad')
+    plt.savefig(filename)  # Guardar el gráfico como imagen
+    plt.close()  # Cerrar el gráfico

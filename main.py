@@ -5,7 +5,10 @@ from functions import (
     ingenieria_caracteristicas,
     construir_modelo,
     calcular_kpis,
-    exportar_datos
+    exportar_datos,
+    graficar_distribucion_calidad,
+    graficar_alcohol_vs_calidad,
+    graficar_acidez_vs_calidad
 )
 
 def main():
@@ -29,6 +32,11 @@ def main():
 
     # Crear la carpeta 'data' si no existe
     os.makedirs("data", exist_ok=True)
+
+    # Graficar y guardar imágenes
+    graficar_distribucion_calidad(datos_vino, "data/distribucion_calidad.png")
+    graficar_alcohol_vs_calidad(datos_vino, "data/alcohol_vs_calidad.png")
+    graficar_acidez_vs_calidad(datos_vino, "data/acidez_vs_calidad.png")
 
     # Exportar el DataFrame a CSV
     exportar_datos(datos_vino, "data/MLChemicalQualityWine.csv")
