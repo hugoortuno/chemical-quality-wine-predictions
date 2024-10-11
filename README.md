@@ -52,7 +52,6 @@ Este proyecto demuestra cómo se pueden utilizar técnicas de Machine Learning p
 
 - **Repositorio en GitHub**: [Predicción de calidad de vinos](https://github.com/hugoortuno/chemical-quality-wine-predictions)
 - **Enlace de la presentación**: [Canva](https://www.canva.com/design/DAGTE8gIUS8/nRPM7MdHmVuE4jq95mhMMw/edit)
-- **Dashboard en Power BI**: Pendiente
 
 ## Créditos
 
